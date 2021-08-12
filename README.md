@@ -34,7 +34,8 @@ Apply complete! Resources: 2 added, 0 changed, 0 destroyed.
 
 E.g. now we have a primary DB instance created. 
 
-### Run second apply in an attempt to create a replica
+
+### Reproduction step 2: Run second apply in an attempt to create a replica
 
 **Hypothesis** : With the both parameters defined : `parameter_group_name`  and `ca_cert_identifier` it should fail.
 
