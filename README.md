@@ -7,14 +7,14 @@ This repository is demonstrating the potential bug in the AWS Provider, where re
 
 # Requirements
 
-- Minimal knowldge of Terraform and AWS. 
+- Minimal knowledge of Terraform and AWS. 
 - Prepare some kind of authorization to AWS provider. 
-- Any Terrafrom from TF 0.12.26 up to 1.0.4
+- Any Terraform from TF 0.12.26 up to 1.0.4
 - AWS provider from `3.47` to `3.53`
 - Any AWS region that has AWS RDS 
 - Clone the code
 
-### Reproductio nstep 1: Run first apply to create main database
+### Reproduction step 1: Run first apply to create the main database
 
 From the clone code repo, provided that you've prepared AWS credentials execute : 
 
@@ -32,9 +32,9 @@ aws_db_instance.main: Creation complete after 17m6s [id=terraform-20210809130010
 Apply complete! Resources: 2 added, 0 changed, 0 destroyed.
 ```
 
-E.g. now we have primary DB instance created. 
+E.g. now we have a primary DB instance created. 
 
-### Run second apply in attempt to create replica
+### Run second apply in an attempt to create a replica
 
 **Hypothesis** : With the both parameters defined : `parameter_group_name`  and `ca_cert_identifier` it should fail.
 
@@ -68,7 +68,7 @@ resource "aws_db_instance" "read" {
 }
 ```
 
-Now let's try to make apply, to create second resource :
+Now let's try to make apply, to create a second resource :
 
 
 ```
@@ -101,7 +101,7 @@ And if we change just one line as follows in the definition of the read replica,
 ```
 
 
-The apply will be succefull : 
+The apply will be successful : 
 
 ```
 terraform apply --auto-approve
@@ -156,6 +156,6 @@ Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
 
 # Results
 
-If the AWS RDS read replica defined with both `parameter_group_name` and `ca_cert_identifier` it's deployement will fail. 
+If the AWS RDS read replica defined with both `parameter_group_name` and `ca_cert_identifier` its deployment will fail. 
 
 
